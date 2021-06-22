@@ -7,17 +7,11 @@ object Dependencies {
 
     val trace4cats = "0.12.0-RC1+146-d193db1e"
 
-    val cats = "2.6.1"
-    val catsEffect = "3.1.1"
     val circe = "0.14.1"
     val http4s = "0.23.0-RC1"
 
-    val catsTestkitScalatest = "2.1.5"
-    val disciplineScalatest = "2.1.5"
-    val discipline = "1.1.5"
-    val scalaCheck = "1.15.4"
-    val scalaCheckShapeless = "1.3.0"
-    val scalaTest = "3.2.9"
+    val kindProjector = "0.13.0"
+    val betterMonadicFor = "0.3.1"
   }
 
   lazy val trace4catsDynamicSamplingConfig =
@@ -32,27 +26,6 @@ object Dependencies {
   lazy val http4sBlazeServer = "org.http4s" %% "http4s-blaze-server"  % Versions.http4s
   lazy val http4sServer = "org.http4s"      %% "http4s-server"        % Versions.http4s
 
-  lazy val catsLaws = "org.typelevel"             %% "cats-laws"              % Versions.cats
-  lazy val catsEffectLaws = "org.typelevel"       %% "cats-effect-laws"       % Versions.catsEffect
-  lazy val catsEffectTestkit = "org.typelevel"    %% "cats-effect-testkit"    % Versions.catsEffect
-  lazy val catsTestkitScalatest = "org.typelevel" %% "cats-testkit-scalatest" % Versions.catsTestkitScalatest
-  lazy val disciplineScalatest = "org.typelevel"  %% "discipline-scalatest"   % Versions.disciplineScalatest
-  lazy val disciplineCore = "org.typelevel"       %% "discipline-core"        % Versions.discipline
-  lazy val scalacheck = "org.scalacheck"          %% "scalacheck"             % Versions.scalaCheck
-  lazy val scalacheckShapeless =
-    "com.github.alexarchambault"       %% "scalacheck-shapeless_1.15" % Versions.scalaCheckShapeless
-  lazy val scalaTest = "org.scalatest" %% "scalatest"                 % Versions.scalaTest
-
-  lazy val test =
-    Seq(
-      catsLaws,
-      catsEffectLaws,
-      catsEffectTestkit,
-      catsTestkitScalatest,
-      disciplineScalatest,
-      disciplineCore,
-      scalacheck,
-      scalacheckShapeless,
-      scalaTest
-    )
+  lazy val kindProjector = ("org.typelevel" % "kind-projector"     % Versions.kindProjector).cross(CrossVersion.full)
+  lazy val betterMonadicFor = "com.olegpy" %% "better-monadic-for" % Versions.betterMonadicFor
 }
