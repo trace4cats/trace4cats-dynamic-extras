@@ -34,7 +34,7 @@ lazy val publishSettings = commonSettings ++ Seq(
 lazy val root = (project in file("."))
   .settings(noPublishSettings)
   .settings(name := "Trace4Cats Dynamic Extras")
-  .aggregate(`dynamic-sampling-http4s`, `dynamic-sampling-http-server`)
+  .aggregate(`dynamic-sampling-http4s`, `dynamic-exporter-http4s`, `dynamic-config-http-server`)
 
 lazy val `dynamic-sampling-http4s` = (project in file("modules/dynamic-sampling-http4s"))
   .settings(publishSettings)
@@ -51,10 +51,25 @@ lazy val `dynamic-sampling-http4s` = (project in file("modules/dynamic-sampling-
     ),
   )
 
-lazy val `dynamic-sampling-http-server` = (project in file("modules/dynamic-sampling-http-server"))
+lazy val `dynamic-exporter-http4s` = (project in file("modules/dynamic-exporter-http4s"))
+  .settings(publishSettings)
+  .settings(
+    name := "trace4cats-dynamic-exporter-http4s",
+    libraryDependencies ++= Seq(
+      Dependencies.circeGeneric,
+      Dependencies.http4sCirce,
+      Dependencies.http4sDsl,
+      Dependencies.http4sServer,
+      Dependencies.trace4catsExporterCommon,
+      Dependencies.trace4catsKernel,
+      Dependencies.trace4catsModel
+    ),
+  )
+
+lazy val `dynamic-config-http-server` = (project in file("modules/dynamic-sampling-http-server"))
   .settings(publishSettings)
   .settings(
     name := "trace4cats-dynamic-sampling-http-server",
     libraryDependencies ++= Seq(Dependencies.http4sBlazeServer)
   )
-  .dependsOn(`dynamic-sampling-http4s`)
+  .dependsOn(`dynamic-sampling-http4s`, `dynamic-exporter-http4s`)
