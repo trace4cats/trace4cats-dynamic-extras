@@ -1,7 +1,7 @@
 package io.janstenpickle.trace4cats.sampling.dynamic.http4s
 
 import cats.syntax.either._
-import io.circe.{Codec, Decoder, Encoder, Json, JsonObject}
+import io.circe.{Codec, Decoder, DecodingFailure, Encoder, Json, JsonObject}
 import io.circe.generic.semiauto._
 import io.circe.syntax._
 import io.janstenpickle.trace4cats.sampling.dynamic.config.SamplerConfig
@@ -29,6 +29,7 @@ object SamplerConfigCodec {
           case "Rate" =>
             val defaults = Json.obj("rootSpansOnly" := true)
             cur.withFocus(defaults.deepMerge).as[SamplerConfig.Rate]
+          case other => Left(DecodingFailure(s"Unknown $disc = '$other'", cur.history))
         }
       },
       Encoder.AsObject.instance {
