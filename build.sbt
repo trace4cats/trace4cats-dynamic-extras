@@ -48,6 +48,7 @@ lazy val `dynamic-sampling-http4s` = (project in file("modules/dynamic-sampling-
       Dependencies.trace4catsKernel,
       Dependencies.trace4catsModel
     ),
+    libraryDependencies ++= Seq(Dependencies.trace4catsTestkit).map(_ % Test)
   )
 
 lazy val `dynamic-sampling-http-server` = (project in file("modules/dynamic-sampling-http-server"))
