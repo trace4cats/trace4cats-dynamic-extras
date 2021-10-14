@@ -1,6 +1,5 @@
 package io.janstenpickle.trace4cats.sampling.dynamic.http
 
-import cats.Applicative
 import cats.effect.kernel.{Async, Resource}
 import cats.syntax.all._
 import io.janstenpickle.trace4cats.kernel.SpanSampler
@@ -19,14 +18,14 @@ object HttpDynamicSpanSampler {
     initialConfig: SamplerConfig = SamplerConfig.Never,
     executionContext: Option[ExecutionContext] = None
   ): Resource[F, SpanSampler[F]] = SamplerHttpRoutes.create[F](initialConfig).flatMap { case (sampler, routes) =>
-    Resource
-      .eval(executionContext.fold(Async[F].executionContext)(Applicative[F].pure))
-      .flatMap(ec =>
-        builder(BlazeServerBuilder[F](ec).bindHttp(port = 8080, host = "0.0.0.0"))
-          .withHttpApp(Router(endpoint -> routes).orNotFound)
-          .resource
-          .as(sampler)
-      )
+    builder(
+      executionContext
+        .fold(BlazeServerBuilder[F])(BlazeServerBuilder[F].withExecutionContext)
+        .bindHttp(port = 8080, host = "0.0.0.0")
+    )
+      .withHttpApp(Router(endpoint -> routes).orNotFound)
+      .resource
+      .as(sampler)
   }
 
   def create[F[_]: Async](
