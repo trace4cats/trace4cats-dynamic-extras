@@ -46,8 +46,5 @@ lazy val `dynamic-sampling-http4s` = (project in file("modules/dynamic-sampling-
 
 lazy val `dynamic-sampling-http-server` = (project in file("modules/dynamic-sampling-http-server"))
   .settings(publishSettings)
-  .settings(
-    name := "trace4cats-dynamic-sampling-http-server",
-    libraryDependencies ++= Seq(Dependencies.http4sBlazeServer)
-  )
+  .settings(name := "trace4cats-dynamic-sampling-http-server", libraryDependencies ++= Seq(Dependencies.http4sServer))
   .dependsOn(`dynamic-sampling-http4s`)
