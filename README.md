@@ -12,8 +12,8 @@ Extra utilities for dynamically configuring [Trace4Cats].
 Add it to your `build.sbt`:
 
 ```scala
-"io.janstenpickle" %% "trace4cats-dynamic-sampling-http4s" % "0.13.0"
-"io.janstenpickle" %% "trace4cats-dynamic-sampling-http-server" % "0.13.0"
+"io.janstenpickle" %% "trace4cats-dynamic-sampling-http4s" % "0.13.1"
+"io.janstenpickle" %% "trace4cats-dynamic-sampling-http-server" % "0.13.1"
 ```
 
 
