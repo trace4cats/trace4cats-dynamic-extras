@@ -1,10 +1,10 @@
-package io.janstenpickle.trace4cats.sampling.dynamic.http4s
+package trace4cats.dynamic.http4s
 
 import cats.syntax.either._
-import io.circe.{Codec, Decoder, DecodingFailure, Encoder, Json, JsonObject}
+import io.circe._
 import io.circe.generic.semiauto._
 import io.circe.syntax._
-import io.janstenpickle.trace4cats.sampling.dynamic.config.SamplerConfig
+import trace4cats.dynamic.config.SamplerConfig
 
 object SamplerConfigCodec {
   // TODO: replace the custom codec with the configured semiauto instance when `circe-generic-extras` is ported to Scala 3
