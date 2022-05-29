@@ -6,7 +6,7 @@ object Dependencies {
     val scala213 = "2.13.8"
     val scala3 = "3.1.2"
 
-    val trace4cats = "0.13.1"
+    val trace4cats = "0.13.1+67-a7d9b849"
 
     val circe = "0.14.2"
     val http4s = "0.23.12"
@@ -15,11 +15,8 @@ object Dependencies {
     val betterMonadicFor = "0.3.1"
   }
 
-  lazy val trace4catsDynamicSamplingConfig =
-    "io.janstenpickle"                            %% "trace4cats-dynamic-sampling-config" % Versions.trace4cats
-  lazy val trace4catsKernel = "io.janstenpickle"  %% "trace4cats-kernel"                  % Versions.trace4cats
-  lazy val trace4catsModel = "io.janstenpickle"   %% "trace4cats-model"                   % Versions.trace4cats
-  lazy val trace4catsTestkit = "io.janstenpickle" %% "trace4cats-testkit"                 % Versions.trace4cats
+  lazy val trace4catsCore = "io.janstenpickle"    %% "trace4cats-core"    % Versions.trace4cats
+  lazy val trace4catsTestkit = "io.janstenpickle" %% "trace4cats-testkit" % Versions.trace4cats
 
   lazy val circeGeneric = "io.circe"   %% "circe-generic" % Versions.circe
   lazy val http4sCirce = "org.http4s"  %% "http4s-circe"  % Versions.http4s

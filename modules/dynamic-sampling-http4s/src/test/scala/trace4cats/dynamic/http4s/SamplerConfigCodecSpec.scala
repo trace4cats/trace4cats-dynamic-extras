@@ -1,13 +1,13 @@
-package io.janstenpickle.trace4cats.sampling.dynamic.http4s
+package trace4cats.dynamic.http4s
 
 import io.circe.Json
 import io.circe.syntax._
-import io.janstenpickle.trace4cats.sampling.dynamic.config.SamplerConfig
-import io.janstenpickle.trace4cats.sampling.dynamic.http4s.SamplerConfigCodec._
 import org.scalacheck.{Arbitrary, Gen}
 import org.scalatest.flatspec.AnyFlatSpec
 import org.scalatest.matchers.should.Matchers
 import org.scalatestplus.scalacheck.ScalaCheckDrivenPropertyChecks
+import trace4cats.dynamic.config.SamplerConfig
+import trace4cats.dynamic.http4s.SamplerConfigCodec._
 
 class SamplerConfigCodecSpec extends AnyFlatSpec with Matchers with ScalaCheckDrivenPropertyChecks {
 

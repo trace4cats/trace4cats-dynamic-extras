@@ -1,13 +1,13 @@
-package io.janstenpickle.trace4cats.sampling.dynamic.http4s
+package trace4cats.dynamic.http4s
 
 import cats.effect.kernel.{Resource, Temporal}
 import cats.syntax.flatMap._
-import io.janstenpickle.trace4cats.kernel.SpanSampler
-import io.janstenpickle.trace4cats.sampling.dynamic.config.{ConfiguredHotSwapSpanSampler, SamplerConfig}
-import io.janstenpickle.trace4cats.sampling.dynamic.http4s.SamplerConfigCodec._
 import org.http4s.HttpRoutes
 import org.http4s.circe.CirceEntityCodec._
 import org.http4s.dsl.Http4sDsl
+import trace4cats.dynamic.config.{ConfiguredHotSwapSpanSampler, SamplerConfig}
+import trace4cats.dynamic.http4s.SamplerConfigCodec._
+import trace4cats.kernel.SpanSampler
 
 object SamplerHttpRoutes {
 

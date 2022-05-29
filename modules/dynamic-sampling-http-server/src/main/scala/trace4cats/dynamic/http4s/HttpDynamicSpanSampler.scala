@@ -1,13 +1,12 @@
-package io.janstenpickle.trace4cats.sampling.dynamic.http
+package trace4cats.dynamic.http4s
 
 import cats.effect.kernel.{Async, Resource}
 import cats.syntax.all._
-import io.janstenpickle.trace4cats.kernel.SpanSampler
-import io.janstenpickle.trace4cats.sampling.dynamic.config.SamplerConfig
-import io.janstenpickle.trace4cats.sampling.dynamic.http4s.SamplerHttpRoutes
 import org.http4s.HttpApp
 import org.http4s.implicits._
 import org.http4s.server.{Router, ServerBuilder}
+import trace4cats.dynamic.config.SamplerConfig
+import trace4cats.kernel.SpanSampler
 
 object HttpDynamicSpanSampler {
   def build[F[_]: Async](
